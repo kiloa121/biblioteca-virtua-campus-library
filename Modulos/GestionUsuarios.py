@@ -1,3 +1,6 @@
+import json
+import os
+
 def MenuUsuarios():
     print("""
         --------------------------------
@@ -14,3 +17,16 @@ def MenuUsuarios():
             pass
         case "3":
             pass
+###################################################################################
+def guardarDatos(usuarios,nombre_archivo = 'usuarios.json'):
+    with open(nombre_archivo,"a") as archivo:
+        json.dump(usuarios, archivo, indent=4)
+
+###################################################################################3
+def cargarDatos(nombre_archivo='usuarios.json'):
+    if os.path.exists(nombre_archivo):
+        with open(nombre_archivo, 'r') as archivo:
+            return json.load(archivo)
+    else:
+        return []
+    
